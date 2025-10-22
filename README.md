@@ -15,3 +15,27 @@
 
 Tarea podemos decir que es una caja y setTarea es la combinacion que cambia lo que hay dentro y cada vez que cambiamos el contenido,Reat actualiza lo que ves
 
+``` js
+export const EstadoPrincipal = () => {
+  const [tarea, setTarea] = useState({
+    titulo: "",
+    tipo:"",
+    descripcion:"",
+    fecha:"",
+  });
+  const [listaTarea, setListaTarea] = useState([]);
+
+  const manejarAgregarTarea = (tarea2) => {
+  };
+
+  return (
+    <div>
+      <ManejoInput
+        value={tarea}
+        onChange={setTarea}
+        onAgregarTarea={manejarAgregarTarea}
+      />
+    </div>
+  );
+};
+```
