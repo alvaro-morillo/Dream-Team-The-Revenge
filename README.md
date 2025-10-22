@@ -39,3 +39,13 @@ export const EstadoPrincipal = () => {
   );
 };
 ```
+
+El componente padre envia tres props al hijo
+ 1- value={tarea} - El objeto actual con los datos del formulario
+ 2- onChange={manejarAgregarTarea} - la funcion para actualizar el estado tarea cuando el usuario escribe
+ 3- onAgregarTarea={manejarAgregarTarea} - La funcion que el hijo ejecutara cuando el usuarfio quiera agregar la tarea a la lista
+
+ digamos que tarea es un papel en blanco, el onChange es el lapiz para escribir y onAgregarTarea un boton para guardar
+
+ value=tarea value recibe el objeto tarea
+ onChange= la funcion para poder cambiarlo
