@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import ManejoInput from "./ManejoInput";
+import { ManejoInput } from "./ManejoInput";
 
 export const EstadoPrincipal = () => {
   const [tarea, setTarea] = useState({
-    titulo: "",
-    tipo:"",
-    descripcion:"",
-    fecha:"",
+    titulo: "Salir a correr",
+    tipo: "",
+    descripcion: "",
+    fecha: "",
   });
   const [listaTarea, setListaTarea] = useState([]);
 
-  const manejarAgregarTarea = (tarea2) => {
+  const manejarAgregarTarea = (nuevaTarea) => {
+    
+    setListaTarea
   };
 
   return (
