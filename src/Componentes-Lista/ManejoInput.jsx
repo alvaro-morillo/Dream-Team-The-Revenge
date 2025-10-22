@@ -11,14 +11,20 @@ export const ManejoInput = ({ value, onChange,manejarAgregarTarea }) => {
     })
   };
 
+  const manejarSubmit = (e) => {
+    e.preventDefault();
+
+    manejarAgregarTarea(value);
+  } 
   return (
     <div>
-      <form action="">
+      <form action="" onSubmit={manejarSubmit}>
         <input
           placeholder="Agrege un titulo"
           type="text"
           value={value.titulo}
           onChange={(e) => manejarCambios("titulo",e.target.value)}
+          onAgregarTarea = {manejarAgregarTarea}
         />
           <input
           placeholder="El tipo de tarea"
