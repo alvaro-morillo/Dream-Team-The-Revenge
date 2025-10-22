@@ -1,16 +1,17 @@
-# React + Vite
+### 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+``` js
+  const [tarea, setTarea] = useState({
+    titulo: "",
+    tipo:"",
+    descripcion:"",
+    fecha:"",
+  });
+```
 
-Currently, two official plugins are available:
+ - Primero definiciones
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+"Estamos declarando el objeto tarea (que es un objeto *con propiedades* ) usando el hook useState que contiene las propiedades de una tarea (titulo,tipo,descripcion,fecha) inicializadas con valores vacios. El hook nos devuelve un array con dos elementos: el valor actual del estado (tarea) y una funcion para actualizarlo (setTarea). Cada vez que llamamos setTarea con nuevos valores,React re-renderiza el componente mostrando la informacion actualizada"
 
-## React Compiler
+Tarea podemos decir que es una caja y setTarea es la combinacion que cambia lo que hay dentro y cada vez que cambiamos el contenido,Reat actualiza lo que ves
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

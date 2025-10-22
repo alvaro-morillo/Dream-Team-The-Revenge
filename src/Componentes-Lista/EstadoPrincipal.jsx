@@ -10,7 +10,8 @@ export const EstadoPrincipal = () => {
   });
   const [listaTarea, setListaTarea] = useState([]);
 
-  const manejarAgregarTarea = () => {};
+  const manejarAgregarTarea = (tarea2) => {
+  };
 
   return (
     <div>
