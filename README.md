@@ -1,16 +1,97 @@
-# React + Vite
+###
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```js
+const [tarea, setTarea] = useState({
+  titulo: "",
+  tipo: "",
+  descripcion: "",
+  fecha: "",
+});
+```
 
-Currently, two official plugins are available:
+- Primero definiciones
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+"Estamos declarando el objeto tarea (que es un objeto _con propiedades_ ) usando el hook useState que contiene las propiedades de una tarea (titulo,tipo,descripcion,fecha) inicializadas con valores vacios. El hook nos devuelve un array con dos elementos: el valor actual del estado (tarea) y una funcion para actualizarlo (setTarea). Cada vez que llamamos setTarea con nuevos valores,React re-renderiza el componente mostrando la informacion actualizada"
 
-## React Compiler
+Tarea podemos decir que es una caja y setTarea es la combinacion que cambia lo que hay dentro y cada vez que cambiamos el contenido,Reat actualiza lo que ves
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```js
+export const EstadoPrincipal = () => {
+  const [tarea, setTarea] = useState({
+    titulo: "",
+    tipo: "",
+    descripcion: "",
+    fecha: "",
+  });
+  const [listaTarea, setListaTarea] = useState([]);
 
-## Expanding the ESLint configuration
+  const manejarAgregarTarea = (tarea2) => {};
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  return (
+    <div>
+      <ManejoInput
+        value={tarea}
+        onChange={setTarea}
+        onAgregarTarea={manejarAgregarTarea}
+      />
+    </div>
+  );
+};
+```
+
+El componente padre envia tres props al hijo <br>
+1- value={tarea} - El objeto actual con los datos del formulario <br>
+2- onChange={setTarea} - la funcion para actualizar el estado tarea cuando el usuario escribe <br>
+3- onAgregarTarea={manejarAgregarTarea} - La funcion que el hijo ejecutara cuando el usuario quiera agregar la tarea a la lista <br>
+
+digamos que tarea es un papel en blanco, el onChange es el lapiz para escribir y onAgregarTarea un boton para guardar
+
+value=tarea value recibe el objeto tarea
+onChange= la funcion para poder cambiarlo
+
+Padre: tarea = {titulo: "Comprar leche", ...} <br>
+↓ envía este objeto <br>
+Hijo: value = {titulo: "Comprar leche", ...} <br>  
+ ↓ usuario escribe "y pan" <br>
+Hijo: "Padre, cambia a: {titulo: "Comprar leche y pan", ...}" <br>
+↓ <br>
+Padre actualiza SU tarea <br>
+
+const manejarCambios = (campo,valor) => {
+
+    onChange({
+        ...value,
+        [campo]:valor,
+    })
+
+};
+
+```js
+
+export const ManejoInput = ({ value, onChange,manejarAgregarTarea }) => {
+
+const manejarSubmit = (e) => {
+e.preventDefault();
+
+    manejarAgregarTarea(value);
+
+}
+return (
+<div>
+<form action="" onSubmit={manejarSubmit}>
+<input
+placeholder="Agrege un titulo"
+type="text"
+value={value.titulo}
+onChange={(e) => manejarCambios("titulo",e.target.value)}
+onAgregarTarea = {manejarAgregarTarea}
+/>
+)
+}
+```
+
+primero declaramos los parametros que recibimos del padre, value,onChange,manejarAgregarTarea
+
+"En estos recibimos  2 funciones onChange que contiene setTarea y manejarAgregarTarea que devolvera el resultado al padre"
+
+para cada input necesitamos value{value.titulo}
